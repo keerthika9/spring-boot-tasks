@@ -22,18 +22,22 @@ public class Track {
   }
 
   public int getId() {
+
     return id;
   }
 
-  public void setId(int id) {
+  public void setId(int id)
+  {
     this.id = id;
   }
 
   public String getName() {
+
     return name;
   }
 
   public void setName(String name) {
+
     this.name = name;
   }
 
@@ -42,6 +46,7 @@ public class Track {
   }
 
   public void setComments(String comments) {
+
     this.comments = comments;
   }
 

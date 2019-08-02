@@ -1,14 +1,16 @@
 package com.stackroute.muzixtrack.service;
 
 import com.stackroute.muzixtrack.domain.Track;
+import com.stackroute.muzixtrack.exceptions.TrackAlreadyExistsException;
+import com.stackroute.muzixtrack.exceptions.TrackNotFoundException;
 
 import java.util.List;
 
 public interface TrackService {
-  public Track save(Track track);
-  public Track getById(int id);
-  public List<Track> getAllTracks();
-  public Track deleteById(int id);
-  public Track updateTrackbyId(int id, Track track);
-  public List<Track>trackByName(String name);
+  public Track save(Track track) throws TrackAlreadyExistsException;
+  public Track getById(int id) throws TrackNotFoundException;
+  public List<Track> getAllTracks() throws Exception;
+  public Track deleteById(int id)throws TrackNotFoundException;
+  public Track updateTrackById(int id,Track track) throws TrackNotFoundException;
+  public List<Track>trackByName(String name)throws Exception;
 }
