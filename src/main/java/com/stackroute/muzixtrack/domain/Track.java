@@ -8,10 +8,14 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+//@Data is like having implicit @Getter,
+// @Setter, @ToString, @EqualsAndHashCode and @RequiredArgsConstructor annotations on the class
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+//@Builder lets you automatically produce the code required to have your class be instantiable with code
 @Builder
+//@Entity annotation defines that a class can be mapped to a table.
 @Entity
 public class Track {
   @Id

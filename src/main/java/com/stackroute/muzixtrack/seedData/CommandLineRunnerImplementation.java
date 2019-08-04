@@ -3,12 +3,27 @@ package com.stackroute.muzixtrack.seedData;
 import com.stackroute.muzixtrack.domain.Track;
 import com.stackroute.muzixtrack.repository.TrackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
+// It will get execute, after the server get starts
 @Component
+//Property source annotation is used to externalize configuration to a property file.
+@PropertySource("classpath:application.properties")
 public class CommandLineRunnerImplementation implements CommandLineRunner {
+  //    Value annotation is used for injecting values into fields in Spring-managed beans
+  @Value("${track.id}")
+  private int id;
+  @Value("${track.name}")
+  private String name;
+  @Value("${track.comment}")
+  private String comment;
+  Track track = new Track();
   private TrackRepository trackRepository;
+
+  //    constructor
   @Autowired
   public CommandLineRunnerImplementation(TrackRepository trackRepository) {
     this.trackRepository = trackRepository;
@@ -16,10 +31,10 @@ public class CommandLineRunnerImplementation implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
-    Track track1=new Track(1,"akhi","nice");
-    trackRepository.save(track1);
-    Track track2=new Track(2,"keer","nice");
-    trackRepository.save(track2);
+    track.setId(id);
+    track.setName(name);
+    track.setComments(comment);
+    trackRepository.save(track);
   }
 }
 
