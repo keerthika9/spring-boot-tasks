@@ -5,10 +5,11 @@ import com.stackroute.muzixtrack.exceptions.TrackAlreadyExistsException;
 import com.stackroute.muzixtrack.exceptions.TrackNotFoundException;
 import com.stackroute.muzixtrack.repository.TrackRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Profile("dev")
 @Service
 
 /*  Qualifier annotation is used to resolve the autowiring conflict,
