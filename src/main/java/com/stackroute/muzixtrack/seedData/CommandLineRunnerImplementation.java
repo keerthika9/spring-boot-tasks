@@ -1,3 +1,4 @@
+/*
 package com.stackroute.muzixtrack.seedData;
 
 import com.stackroute.muzixtrack.domain.Track;
@@ -22,3 +23,4 @@ public class CommandLineRunnerImplementation implements CommandLineRunner {
     trackRepository.save(track2);
   }
 }
+*/

@@ -56,7 +56,7 @@ public class TrackDummyServiceImplementation implements TrackService {
   }
 
   @Override
-  public List<Track> trackByName(String name) throws Exception {
+  public List<Track> findByName(String name) throws Exception {
     System.out.println("track by name");
     return null;
   }

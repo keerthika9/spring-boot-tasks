@@ -43,7 +43,7 @@ class TrackServiceImpl implements TrackService {
     if (!trackRepository.existsById(id)) {
       throw new TrackNotFoundException("not found");
     }
-    Track retriveTrack = trackRepository.findById(id).get();
+    Track retriveTrack = trackRepository.findById(id);
     return retriveTrack;
   }
 
@@ -62,7 +62,7 @@ class TrackServiceImpl implements TrackService {
   public Track deleteById(int id) throws TrackNotFoundException {
     //  delete the track
     if (trackRepository.existsById(id)) {
-      Track retrivedTrack = trackRepository.findById(id).get();
+      Track retrivedTrack = trackRepository.findById(id);
       trackRepository.deleteById(id);
       return retrivedTrack;
     } else {
@@ -75,7 +75,7 @@ class TrackServiceImpl implements TrackService {
   public Track updateTrackById(int id,Track track) throws TrackNotFoundException {
 //  update the track
     if (trackRepository.existsById(id)) {
-      Track updateTrackById = trackRepository.findById(id).get();
+      Track updateTrackById = trackRepository.findById(id);
       return updateTrackById;
     } else {
       throw new TrackNotFoundException("track not found");
@@ -84,11 +84,11 @@ class TrackServiceImpl implements TrackService {
 
 
   @Override
-  public List<Track> trackByName(String name) throws Exception {
-    if (trackRepository.trackByName(name).isEmpty()) {
+  public List<Track> findByName(String name) throws Exception {
+    if (trackRepository.findByName(name).isEmpty()) {
       throw new Exception("no track with this name");
     } else {
-      List<Track> allTracksByName = trackRepository.trackByName(name);
+      List<Track> allTracksByName = trackRepository.findByName(name);
       return allTracksByName;
     }
   }

@@ -73,10 +73,10 @@ public class TrackController {
 
   @GetMapping("tracks/{name}")
   //to get the track by name
-  public ResponseEntity<?> getTrackByName(@PathVariable String name) throws Exception {
+  public ResponseEntity<?> getFindByName(@PathVariable String name) throws Exception {
     ResponseEntity responseEntity;
     System.out.println(name);
-     List<Track> retrivedTrack = trackService.trackByName(name);
+     List<Track> retrivedTrack = trackService.findByName(name);
       return new ResponseEntity<>(retrivedTrack, HttpStatus.CREATED);
 
   }
