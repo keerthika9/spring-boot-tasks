@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Profile("prod")
+//@Profile("prod")
 @Primary
 @Qualifier
 class TrackServiceImpl implements TrackService {

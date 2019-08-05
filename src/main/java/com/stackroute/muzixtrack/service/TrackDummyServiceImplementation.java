@@ -4,20 +4,26 @@ import com.stackroute.muzixtrack.domain.Track;
 import com.stackroute.muzixtrack.exceptions.TrackAlreadyExistsException;
 import com.stackroute.muzixtrack.exceptions.TrackNotFoundException;
 import com.stackroute.muzixtrack.repository.TrackRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-@Profile("dev")
+//@Profile("dev")
 @Service
 
 /*  Qualifier annotation is used to resolve the autowiring conflict,
     when there are multiple beans of same type "Primary" annotation will execute
 */
-@Qualifier
+//@Qualifier
 public class TrackDummyServiceImplementation implements TrackService {
   private TrackRepository trackRepository;
+
+  @Autowired
+  public TrackDummyServiceImplementation(TrackRepository trackRepository) {
+    this.trackRepository = trackRepository;
+  }
 
   @Override
   public Track save(Track track) throws TrackAlreadyExistsException {
