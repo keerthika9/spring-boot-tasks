@@ -98,7 +98,7 @@ public class TrackControllerTest {
   }
   @Test
   public void givenIdAsInputShouldUpdateTrack() throws Exception {
-    when(trackService.updateTrackById(9,track)).thenReturn(track);
+    when(trackService.updateTrackById(track)).thenReturn(track);
     mockMvc.perform(MockMvcRequestBuilders.delete("/api/v1/track/9")
       .contentType(MediaType.APPLICATION_JSON).content(asJsonString(track)))
       .andExpect(MockMvcResultMatchers.status().isFound())
