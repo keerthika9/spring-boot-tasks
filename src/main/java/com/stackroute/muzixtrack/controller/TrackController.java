@@ -48,7 +48,7 @@ public class TrackController {
   //to get the List of track
   public ResponseEntity<?> getAllTracks() throws Exception {
     ResponseEntity responseEntity;
-      responseEntity = new ResponseEntity<List<Track>>(trackService.getAllTracks(), HttpStatus.CREATED);
+      responseEntity = new ResponseEntity<List<Track>>(trackService.getAllTracks(), HttpStatus.OK);
     return responseEntity;
   }
 
@@ -58,7 +58,7 @@ public class TrackController {
     System.out.println(id);
 
       Track retrivedTrack = trackService.getById(id);
-      return new ResponseEntity<>(retrivedTrack, HttpStatus.CREATED);
+      return new ResponseEntity<>(retrivedTrack, HttpStatus.NO_CONTENT);
   }
 
   @PutMapping("track/{id}")
