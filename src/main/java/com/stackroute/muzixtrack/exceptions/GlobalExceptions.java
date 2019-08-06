@@ -19,6 +19,6 @@ public class GlobalExceptions extends ResponseEntityExceptionHandler {
   //    For handling the errors for track already exists
   @ExceptionHandler({TrackAlreadyExistsException.class})
   public ResponseEntity<String> handleTrackAlreadyExistExceptions(Exception ex) {
-    return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_ACCEPTABLE);
+    return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
   }
 }

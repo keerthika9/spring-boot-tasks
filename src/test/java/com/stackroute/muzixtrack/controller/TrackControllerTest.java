@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stackroute.muzixtrack.domain.Track;
 import com.stackroute.muzixtrack.exceptions.GlobalExceptions;
 import com.stackroute.muzixtrack.exceptions.TrackAlreadyExistsException;
+import com.stackroute.muzixtrack.exceptions.TrackNotFoundException;
 import com.stackroute.muzixtrack.service.TrackService;
 import org.junit.Before;
 import org.junit.Test;
@@ -95,14 +96,14 @@ public class TrackControllerTest {
       .andExpect(MockMvcResultMatchers.status().isCreated())
       .andDo(MockMvcResultHandlers.print());
   }
-  /*@Test
+  @Test
   public void givenIdAsInputShouldUpdateTrack() throws Exception {
-    when(trackService.updateTrackById(anyInt(),track)).thenReturn(track);
+    when(trackService.updateTrackById(9,track)).thenReturn(track);
     mockMvc.perform(MockMvcRequestBuilders.delete("/api/v1/track/9")
       .contentType(MediaType.APPLICATION_JSON).content(asJsonString(track)))
-      .andExpect(MockMvcResultMatchers.status().isNoContent())
+      .andExpect(MockMvcResultMatchers.status().isFound())
       .andDo(MockMvcResultHandlers.print());
-  }*/
+  }
   private static String asJsonString(final Object obj)
   {
     try{
