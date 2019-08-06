@@ -29,7 +29,4 @@ build/
 
 ### VS Code ###
 .vscode/
-.mvnw
-muzix-track.iml
-HELP.md
-mvnw.cmd
+
