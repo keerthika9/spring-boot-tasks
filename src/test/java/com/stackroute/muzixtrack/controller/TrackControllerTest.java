@@ -49,7 +49,7 @@ public class TrackControllerTest {
     list.add(track);
   }
   @Test
-  public void saveUser() throws Exception {
+  public void givenDataAsInputShouldReturnsaveUser() throws Exception {
     when(trackService.save(any())).thenReturn(track);
     mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/track")
       .contentType(MediaType.APPLICATION_JSON).content(asJsonString(track)))
@@ -57,7 +57,7 @@ public class TrackControllerTest {
       .andDo(MockMvcResultHandlers.print());
   }
   @Test
-  public void givenUrlAsInputShouldReturnSaveUserFailure() throws Exception {
+  public void givenDataAsInputShouldReturnSaveUserFailure() throws Exception {
     when(trackService.save(any())).thenThrow(TrackAlreadyExistsException.class);
     mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/track")
       .contentType(MediaType.APPLICATION_JSON).content(asJsonString(track)))
@@ -65,7 +65,7 @@ public class TrackControllerTest {
       .andDo(MockMvcResultHandlers.print());
   }
   @Test
-  public void givenUrlAsInputShouldReturnAllTracks() throws Exception {
+  public void givenDataAsInputShouldReturnAllTracks() throws Exception {
     when(trackService.getAllTracks()).thenReturn(list);
     mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/tracks")
       .contentType(MediaType.APPLICATION_JSON).content(asJsonString(track)))
