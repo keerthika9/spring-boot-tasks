@@ -45,20 +45,20 @@ public class TrackRepositoryTest {
     assertEquals(1, trackDetails.getId());
   }
   @Test
-  public void givenNameShouldReturnTrackDetails() {
+  public void givenNameAsInputShouldReturnTrackDetails() {
     Track track = new Track(2, "akhi", "great");
     trackRepository.save(track);
     List<Track> list = trackRepository.findAll();
     Assert.assertEquals("akhi", list.get(0).getName());
   }
 @Test
-  public void givenIdShouldReturnTrackFailure(){
+  public void givenIdAsInputShouldReturnTrackFailure(){
   trackRepository.save(track);
   Track trackDetails = trackRepository.findById(track.getId());
   Assert.assertNotSame(3,trackDetails.getId());
   }
   @Test
-  public void givenDetailsShouldGetSaved() {
+  public void givenDetailsAsInputShouldGetSaved() {
     Track trackInput = new Track(3, "lakalaka", "horror");
     trackRepository.save(trackInput);
     List<Track> trackDetails = trackRepository.findAll();
