@@ -41,6 +41,7 @@ public class TrackServiceTest {
   }
   @After
   public void tearDown() throws Exception {
+   track=null;
   }
   @Test
   public void saveTrackSuccess() throws TrackAlreadyExistsException {
