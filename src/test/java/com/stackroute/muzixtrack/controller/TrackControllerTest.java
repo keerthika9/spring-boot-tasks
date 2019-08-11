@@ -48,6 +48,10 @@ public class TrackControllerTest {
     list = new ArrayList();
     list.add(track);
   }
+  @After
+  public void tearDown() throws Exception {
+   track=null;
+  }
   @Test
   public void givenDataAsInputShouldReturnsaveUser() throws Exception {
     when(trackService.save(any())).thenReturn(track);
