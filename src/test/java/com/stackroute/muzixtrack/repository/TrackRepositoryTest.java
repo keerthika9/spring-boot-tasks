@@ -22,8 +22,8 @@ import static org.junit.Assert.assertEquals;
 @SpringBootTest
 public class TrackRepositoryTest {
   @Autowired//@Autowired annotation is used for automatic dependency injection
-    TrackRepository trackRepository;
-  Track track;
+   private TrackRepository trackRepository;
+  private Track track;
 
   @Before
   public void setup() {
