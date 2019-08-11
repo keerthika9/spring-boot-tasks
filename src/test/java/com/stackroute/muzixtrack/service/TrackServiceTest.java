@@ -20,7 +20,7 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.client.ExpectedCount.times;
 
 public class TrackServiceTest {
-  Track track;
+ private Track track;
   //Create a mock for UserRepository
   @Mock
   TrackRepository trackRepository;
