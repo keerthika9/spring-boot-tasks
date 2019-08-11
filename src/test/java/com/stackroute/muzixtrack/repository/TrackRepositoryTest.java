@@ -58,7 +58,7 @@ public class TrackRepositoryTest {
   Assert.assertNotSame(3,trackDetails.getId());
   }
   @Test
-  public void givenDetailsAsInputShouldGetSaved() {
+  public void givenDetailsAsInputShouldReturnSavedTrack() {
     Track trackInput = new Track(3, "lakalaka", "horror");
     trackRepository.save(trackInput);
     List<Track> trackDetails = trackRepository.findAll();
@@ -66,5 +66,18 @@ public class TrackRepositoryTest {
     expectedDtails.add(trackInput);
     assertEquals(expectedDtails, trackDetails);
   }
-
+  
+ @Test
+  public void givenIdAsInputShouldReturnDeleteTrack(){
+    trackRepository.save(track);
+    Track deleteTrack=trackRepository.delete(track.getId());
+    Assert.assertEquals(2,deleteTrack.getId());
+  }
+  @Test
+  public void givenIdAsInputShouldReturnUpdatedTrack(){
+    trackRepository.save(track);
+    Track updateTrack=trackRepository.update(track);
+    Assert.assertEquals(3,updateTrack.getId());
+    
+  }
 }
