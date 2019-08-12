@@ -52,8 +52,16 @@ public class TrackServiceTest {
     //verify here verifies that trackRepository save method is only called ones
     verify(trackRepository, Mockito.times(1)).save(track);
   }
+ @Test(expected = TrackAlreadyExistsException.class)
+  public void givenTrackAsInputShouldReturnSaveTrackTestFailure() throws TrackAlreadyExistsException {
+    when(trackRepository.save(any())).thenReturn(null);
+    Track savedTrack = trackService.save(track);
+    System.out.println("savedTrack" + savedTrack);
+   verify(trackRepository, Mockito.times(0)).save(track);
+
+  }
   @Test
-  public void getAllTrack() throws Exception {
+  public void givenDataAsInputShouldReturnAllTracks() throws Exception {
     trackRepository.save(track);
     //stubbing the mock to return specific data
     when(trackRepository.findAll()).thenReturn(list);
@@ -104,6 +112,16 @@ public class TrackServiceTest {
     //Assert.assertEquals(user,savedUser);
       /*doThrow(new UserAlreadyExistException()).when(userRepository).findById(eq(101));
       userService.saveUser(user);*/
-  }}
+  }
+  @Test(expected = TrackNotFoundException.class)
+    public void givenNegativeIdAsInputShouldReturnTrackNotFound() throws TrackNotFoundException {
+    trackRepository.save(track);
+    //stubbing the mock to return specific data
+    when(trackRepository.findById(9)).thenReturn(track);
+    Track gettrack = trackService.getById(9);
+    Assert.assertEquals(track, gettrack);
+   verify(trackRepository, Mockito.times(1)).findById(track);
+  }
+}
 
 
