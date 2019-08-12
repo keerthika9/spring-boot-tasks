@@ -53,15 +53,16 @@ public class TrackControllerTest {
    track=null;
   }
   @Test
-  public void givenDataAsInputShouldReturnsaveUser() throws Exception {
+  public void givenDataAsInputShouldReturnsaveTrack() throws Exception {
     when(trackService.save(any())).thenReturn(track);
     mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/track")
       .contentType(MediaType.APPLICATION_JSON).content(asJsonString(track)))
       .andExpect(MockMvcResultMatchers.status().isCreated())
       .andDo(MockMvcResultHandlers.print());
+    verify(trackservice,times(1)
   }
   @Test
-  public void givenDataAsInputShouldReturnSaveUserFailure() throws Exception {
+  public void givenDataAsInputShouldReturnSaveTrackFailure() throws Exception {
     when(trackService.save(any())).thenThrow(TrackAlreadyExistsException.class);
     mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/track")
       .contentType(MediaType.APPLICATION_JSON).content(asJsonString(track)))
