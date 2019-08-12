@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 //When a class is annotated with @RunWith or extends a class annotated with @RunWith, JUnit will invoke the class it references to runthe tests in that class instead of the runner built into JUnit
@@ -66,18 +67,26 @@ public class TrackRepositoryTest {
     expectedDtails.add(trackInput);
     assertEquals(expectedDtails, trackDetails);
   }
-  
- @Test
-  public void givenIdAsInputShouldReturnDeleteTrack(){
+
+  @Test
+  public void givenTrackShouldDeleteTrackById(){
     trackRepository.save(track);
-    Track deleteTrack=trackRepository.delete(track.getId());
-    Assert.assertEquals(2,deleteTrack.getId());
+    trackRepository.deleteById(track.getId());
+    assertEquals(true, trackRepository.existsById(track.getId()));
+
   }
   @Test
-  public void givenIdAsInputShouldReturnUpdatedTrack(){
-    trackRepository.save(track);
-    Track updateTrack=trackRepository.update(track);
-    Assert.assertEquals(3,updateTrack.getId());
-    
+  public void gievnTrackShouldUpdateTrackById() {
+    Track track1 = new Track(1, "SAHO", "title track");
+    Track track2 = new Track(2, "LAKA", "intro song");
+    trackRepository.save(track1);
+    trackRepository.save(track2);
+
+
+    Track trackList = trackRepository.findById(track1.getId());
+    trackList.setName(track2.getName());
+
+    assertEquals(trackList.getName(), track2.getName());
+
   }
 }
