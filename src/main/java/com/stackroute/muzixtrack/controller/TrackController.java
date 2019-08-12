@@ -40,7 +40,7 @@ public class TrackController {
   public ResponseEntity<?> getTrackById(@PathVariable int id) throws TrackNotFoundException {
     ResponseEntity responseEntity;
       Track retrivedTrack = trackService.getById(id);
-      return new ResponseEntity<>(retrivedTrack, HttpStatus.CREATED);
+      return new ResponseEntity<>(retrivedTrack, HttpStatus.FOUND);
 
   }
 
@@ -64,7 +64,7 @@ public class TrackController {
   public ResponseEntity<?> updateTrackById(@PathVariable int id) throws TrackNotFoundException {
     ResponseEntity responseEntity;
       Track trackUpdated = trackService.getById(id);
-      responseEntity = new ResponseEntity<>(trackUpdated, HttpStatus.FOUND);
+      responseEntity = new ResponseEntity<>(trackUpdated, HttpStatus.OK);
     return responseEntity;
   }
 
@@ -73,7 +73,7 @@ public class TrackController {
   public ResponseEntity<?> getFindByName(@PathVariable String name) throws Exception {
     ResponseEntity responseEntity;
      List<Track> retrivedTrack = trackService.findByName(name);
-      return new ResponseEntity<>(retrivedTrack, HttpStatus.CREATED);
+      return new ResponseEntity<>(retrivedTrack, HttpStatus.FOUND);
 
   }
 
