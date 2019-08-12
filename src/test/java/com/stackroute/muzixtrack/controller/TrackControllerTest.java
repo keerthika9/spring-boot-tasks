@@ -59,7 +59,7 @@ public class TrackControllerTest {
       .contentType(MediaType.APPLICATION_JSON).content(asJsonString(track)))
       .andExpect(MockMvcResultMatchers.status().isCreated())
       .andDo(MockMvcResultHandlers.print());
-    verify(trackservice,times(1)
+    verify(trackservice,times(1).saveTrack(track))
   }
   @Test
   public void givenDataAsInputShouldReturnSaveTrackFailure() throws Exception {
@@ -68,6 +68,7 @@ public class TrackControllerTest {
       .contentType(MediaType.APPLICATION_JSON).content(asJsonString(track)))
       .andExpect(MockMvcResultMatchers.status().isConflict())
       .andDo(MockMvcResultHandlers.print());
+    verify(trackservice,times(1).saveTrack(track))
   }
   @Test
   public void givenDataAsInputShouldReturnAllTracks() throws Exception {
@@ -76,6 +77,7 @@ public class TrackControllerTest {
       .contentType(MediaType.APPLICATION_JSON).content(asJsonString(track)))
       .andExpect(MockMvcResultMatchers.status().isOk())
       .andDo(MockMvcResultHandlers.print());
+    verify(trackservice,times(1).getAllTracks(track))
   }
   @Test
   public void givenIdAsInputShouldDeleteTrack() throws Exception {
@@ -84,6 +86,7 @@ public class TrackControllerTest {
       .contentType(MediaType.APPLICATION_JSON).content(asJsonString(track)))
       .andExpect(MockMvcResultMatchers.status().isNoContent())
       .andDo(MockMvcResultHandlers.print());
+    verify(trackservice,times(1).deleteTrackById(track.getId()))
   }
   @Test
   public void givenIdAsInputShouldReturnTrack() throws Exception {
@@ -92,6 +95,7 @@ public class TrackControllerTest {
       .contentType(MediaType.APPLICATION_JSON).content(asJsonString(track)))
       .andExpect(MockMvcResultMatchers.status().isCreated())
       .andDo(MockMvcResultHandlers.print());
+    verify(trackservice,times(1).findTrackById(track))
   }
   @Test
   public void givenNameAsInputShouldReturnTrack() throws Exception {
@@ -100,6 +104,7 @@ public class TrackControllerTest {
       .contentType(MediaType.APPLICATION_JSON).content(asJsonString(track)))
       .andExpect(MockMvcResultMatchers.status().isCreated())
       .andDo(MockMvcResultHandlers.print());
+    verify(trackservice,times(1).findTrackByName(track))
   }
   @Test
   public void givenIdAsInputShouldUpdateTrack() throws Exception {
@@ -108,6 +113,7 @@ public class TrackControllerTest {
       .contentType(MediaType.APPLICATION_JSON).content(asJsonString(track)))
       .andExpect(MockMvcResultMatchers.status().isFound())
       .andDo(MockMvcResultHandlers.print());
+    verify(trackservice,times(1).updateTrackById(track))
   }
   private static String asJsonString(final Object obj)
   {
