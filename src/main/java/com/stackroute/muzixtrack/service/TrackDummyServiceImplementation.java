@@ -33,31 +33,26 @@ public class TrackDummyServiceImplementation implements TrackService {
 
   @Override
   public Track getById(int id) throws TrackNotFoundException {
-    System.out.println("get track by id");
     return null;
   }
 
   @Override
   public List<Track> getAllTracks() {
-    System.out.println("retrieve tracks");
     return null;
   }
 
   @Override
   public Track deleteById(int id) throws TrackNotFoundException {
-    System.out.println("delete track");
     return null;
   }
 
   @Override
   public Track updateTrackById(int id, Track track) throws TrackNotFoundException {
-    System.out.println("update track");
     return null;
   }
 
   @Override
   public List<Track> findByName(String name) throws Exception {
-    System.out.println("track by name");
     return null;
   }
 
