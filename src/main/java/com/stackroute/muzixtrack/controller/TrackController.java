@@ -26,7 +26,7 @@ public class TrackController {
   }
 
   @PostMapping("/track")
-  public ResponseEntity<?> save(@RequestBody Track track) throws TrackAlreadyExistsException {
+  public ResponseEntity<?> save(@RequestBody Track track) throws TrackAlreadyExistsException,HttpServerErrorException.InternalServerError {
     ResponseEntity responseEntity;
     Track savedTrack = trackService.save(track);
     return new ResponseEntity(savedTrack, HttpStatus.CREATED);
@@ -37,7 +37,7 @@ public class TrackController {
 
 
   @GetMapping("track/{id}")
-  public ResponseEntity<?> getTrackById(@PathVariable int id) throws TrackNotFoundException {
+  public ResponseEntity<?> getTrackById(@PathVariable int id) throws TrackNotFoundException ,HttpServerErrorException.InternalServerError{
     ResponseEntity responseEntity;
       Track retrivedTrack = trackService.getById(id);
       return new ResponseEntity<>(retrivedTrack, HttpStatus.FOUND);
@@ -46,14 +46,14 @@ public class TrackController {
 
   @GetMapping("tracks")
   //to get the List of track
-  public ResponseEntity<?> getAllTracks() throws Exception {
+  public ResponseEntity<?> getAllTracks() throws Exception ,HttpServerErrorException.InternalServerError{
     ResponseEntity responseEntity;
       responseEntity = new ResponseEntity<List<Track>>(trackService.getAllTracks(), HttpStatus.OK);
     return responseEntity;
   }
 
   @DeleteMapping("track/{id}")
-  public ResponseEntity<?> deleteById(@PathVariable int id) throws TrackNotFoundException {
+  public ResponseEntity<?> deleteById(@PathVariable int id) throws TrackNotFoundException ,HttpServerErrorException.InternalServerError{
     ResponseEntity responseEntity;
       Track retrivedTrack = trackService.getById(id);
       return new ResponseEntity<>(retrivedTrack, HttpStatus.NO_CONTENT);
@@ -61,7 +61,7 @@ public class TrackController {
 
   @PutMapping("track/{id}")
   //to update the track
-  public ResponseEntity<?> updateTrackById(@PathVariable int id) throws TrackNotFoundException {
+  public ResponseEntity<?> updateTrackById(@PathVariable int id) throws TrackNotFoundException,HttpServerErrorException.InternalServerError {
     ResponseEntity responseEntity;
       Track trackUpdated = trackService.getById(id);
       responseEntity = new ResponseEntity<>(trackUpdated, HttpStatus.OK);
@@ -70,7 +70,7 @@ public class TrackController {
 
   @GetMapping("tracks/{name}")
   //to get the track by name
-  public ResponseEntity<?> getFindByName(@PathVariable String name) throws Exception {
+  public ResponseEntity<?> getFindByName(@PathVariable String name) throws Exception,HttpServerErrorException.InternalServerError {
     ResponseEntity responseEntity;
      List<Track> retrivedTrack = trackService.findByName(name);
       return new ResponseEntity<>(retrivedTrack, HttpStatus.FOUND);
