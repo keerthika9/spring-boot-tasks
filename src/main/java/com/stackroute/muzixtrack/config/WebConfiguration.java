@@ -1,4 +1,4 @@
-/*
+
 package com.stackroute.muzixtrack.config;
 
 import org.h2.server.web.WebServlet;
@@ -15,4 +15,4 @@ public class WebConfiguration {
     return registrationBean;
   }
 }
-*/
+
