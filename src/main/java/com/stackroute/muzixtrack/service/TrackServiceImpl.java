@@ -27,7 +27,7 @@ class TrackServiceImpl implements TrackService {
   }
 
   @Override
-  public Track save(Track track) throws TrackAlreadyExistsException {
+  public Track save(Track track) throws TrackAlreadyExistsException,HttpServerErrorException.InternalServerError {
     if (trackRepository.existsById(track.getId())) {
       throw new TrackAlreadyExistsException(("user already exists"));
     }
@@ -39,7 +39,7 @@ class TrackServiceImpl implements TrackService {
   }
 
   @Override
-  public Track getById(int id) throws TrackNotFoundException {
+  public Track getById(int id) throws TrackNotFoundException,HttpServerErrorException.InternalServerError {
     if (!trackRepository.existsById(id)) {
       throw new TrackNotFoundException("not found");
     }
@@ -48,7 +48,7 @@ class TrackServiceImpl implements TrackService {
   }
 
   @Override
-  public List<Track> getAllTracks() throws Exception {
+  public List<Track> getAllTracks() throws Exception,HttpServerErrorException.InternalServerError {
     if (trackRepository.findAll().isEmpty()) {
       throw new Exception("Internal server error");
     } else {
@@ -59,7 +59,7 @@ class TrackServiceImpl implements TrackService {
 
   @Override
   //delete a particular  part of a track by its id
-  public Track deleteById(int id) throws TrackNotFoundException {
+  public Track deleteById(int id) throws TrackNotFoundException,HttpServerErrorException.InternalServerError {
     //  delete the track
     if (trackRepository.existsById(id)) {
       Track retrivedTrack = trackRepository.findById(id);
@@ -72,7 +72,7 @@ class TrackServiceImpl implements TrackService {
 
   @Override
   //update a particular  part of a track by its id
-  public Track updateTrackById(int id,Track track) throws TrackNotFoundException {
+  public Track updateTrackById(int id,Track track) throws TrackNotFoundException,HttpServerErrorException.InternalServerError {
 //  update the track
     if (trackRepository.existsById(id)) {
       Track updateTrackById = trackRepository.findById(id);
@@ -84,7 +84,7 @@ class TrackServiceImpl implements TrackService {
 
 
   @Override
-  public List<Track> findByName(String name) throws Exception {
+  public List<Track> findByName(String name) throws Exception,HttpServerErrorException.InternalServerError {
     if (trackRepository.findByName(name).isEmpty()) {
       throw new Exception("no track with this name");
     } else {
