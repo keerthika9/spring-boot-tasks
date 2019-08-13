@@ -21,4 +21,8 @@ public class GlobalExceptions extends ResponseEntityExceptionHandler {
   public ResponseEntity<String> handleTrackAlreadyExistExceptions(Exception ex) {
     return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
   }
+  @ExceptionHandler( HttpServerErrorException.InternalServerError.class)
+    public ResponseEntity<?>internalServrError(HttpServerErrorException.InternalServerError error){
+        return  new ResponseEntity<String>("internal server occured",HttpStatus.CREATED);
+    }
 }
