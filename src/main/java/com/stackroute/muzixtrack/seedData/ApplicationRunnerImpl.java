@@ -1,4 +1,4 @@
-/*
+
 package com.stackroute.muzixtrack.seedData;
 
 import com.stackroute.muzixtrack.domain.Track;
@@ -25,4 +25,4 @@ public class ApplicationRunnerImpl implements ApplicationListener {
     trackRepository.save(track3);
   }
 }
-*/
+
